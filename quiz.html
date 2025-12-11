@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Soal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TIMER -->
+<div id="timer" class="timer-box">20:00</div>
+
+<div class="container">
+  <header>
+    <h1 id="materi-title">Latihan Soal</h1>
+    <p id="progress-text"></p>
+  </header>
+
+  <main id="quiz-container"></main>
+
+  <div class="bottom-bar">
+    <button id="next-btn" onclick="nextQuestion()">Soal Selanjutnya</button>
+  </div>
+</div>
+
+
+<!-- LOAD FILE SOAL BERDASARKAN MATERI -->
+<script>
+  const subject = localStorage.getItem("subject");
+
+  const titles = {
+    sejarah: "Sejarah Kearsipan",
+    hukum: "Aspek Hukum Dalam Kearsipan",
+    persuratan: "Pengurusan Surat & Tata Persuratan",
+    akses: "Akses & Layanan Arsip",
+    pemeliharaan: "Pemeliharaan & Pengamanan Arsip",
+    vital: "Pengelolaan Arsip Vital",
+    retensi: "Perancangan Jadwal Retensi Arsip"
+  };
+
+  document.getElementById("materi-title").innerText = titles[subject];
+
+  const subjectMap = {
+    sejarah: "questions/sejarah.js",
+    hukum: "questions/hukum.js",
+    persuratan: "questions/persuratan.js",
+    akses: "questions/akses.js",
+    pemeliharaan: "questions/pemeliharaan.js",
+    vital: "questions/vital.js",
+    retensi: "questions/retensi.js",
+  };
+
+  const questionScript = document.createElement("script");
+  questionScript.src = subjectMap[subject];
+  document.body.appendChild(questionScript);
+
+  // Setelah file soal selesai diload → load quiz
+  questionScript.onload = () => {
+    // pastikan questions[] sudah ada
+    if (typeof questions !== "undefined") {
+      loadQuestion();
+    } else {
+      document.getElementById("quiz-container").innerHTML = 
+        "<p>Soal tidak ditemukan Bu 😭 File soal mungkin belum ter-upload.</p>";
+    }
+  };
+</script>
+
+<!-- ENGINE QUIZ -->
+<script src="mainQuizEngine.js"></script>
+
+</body>
+</html>

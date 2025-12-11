@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Materi - Latihan Soal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1 class="title-main">🎓 Latihan Soal Kearsipan</h1>
+  <p class="subtitle">Silakan pilih mata kuliah ya Bu Syafira ✨</p>
+
+  <div class="grid-menu">
+
+    <div class="card" onclick="start('sejarah')">
+      <h3>FSAR4104</h3>
+      <p>Sejarah Kearsipan</p>
+    </div>
+
+    <div class="card" onclick="start('hukum')">
+      <h3>FSAR4102</h3>
+      <p>Aspek Hukum Dalam Kearsipan</p>
+    </div>
+
+    <div class="card" onclick="start('persuratan')">
+      <h3>FSAR4205</h3>
+      <p>Pengurusan Surat & Tata Persuratan</p>
+    </div>
+
+    <div class="card" onclick="start('akses')">
+      <h3>FSAR4106</h3>
+      <p>Akses & Layanan Arsip</p>
+    </div>
+
+    <div class="card" onclick="start('pemeliharaan')">
+      <h3>FSAR4407</h3>
+      <p>Pemeliharaan & Pengamanan Arsip</p>
+    </div>
+
+    <div class="card" onclick="start('vital')">
+      <h3>FSAR4208</h3>
+      <p>Pengelolaan Arsip Vital</p>
+    </div>
+
+    <div class="card" onclick="start('retensi')">
+      <h3>FSAR4402</h3>
+      <p>Perancangan Jadwal Retensi Arsip</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function start(subject) {
+    localStorage.setItem("subject", subject);
+    window.location.href = "quiz.html";
+  }
+</script>
+
+</body>
+</html>
