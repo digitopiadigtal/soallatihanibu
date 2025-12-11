@@ -35,7 +35,6 @@ function updateProgress() {
 }
 
 function loadQuestion() {
-  // Mulai timer hanya sekali di soal pertama
   if (currentIndex === 0 && !timerInterval) {
     startTimer();
   }
@@ -203,3 +202,4 @@ function restartQuiz() {
   document.getElementById("next-btn").style.display = "inline-block";
   loadQuestion();
 }
+
